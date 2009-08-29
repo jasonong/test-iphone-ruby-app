@@ -52,6 +52,6 @@ post '/blog/delete/:id' do
 end
 
 get '/blog/sync' do
-  sync = `cd db && git pull origin master && git commit -am "#{Time.now}" && git push origin master`
+  sync = `cd db && git commit -am "#{Time.now}" && git push origin master && git pull origin master`
   redirect '/blog' if sync
 end
