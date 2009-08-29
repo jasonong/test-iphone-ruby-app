@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+    <style type="text/css" media="screen">@import "/iui/iui.css";</style>
+    <script type="application/x-javascript" src="/iui/iui.js"></script>
+  </head>
+
+  <body>
+    	<div class="toolbar">
+		<h1>My Blog</h1>
+    	</div>
+	<ul id='blog' title="Blog Posts" selected="true" >
+		<% @posts.each do |index, post| %>
+		<li><a href='blog/show/<%= index %>'><%= post[:title] %></a></li>
+		<% end %>
+		<li><a href='blog/new'>New Post</a>
+	</ul>
+  </body>
+</html>
