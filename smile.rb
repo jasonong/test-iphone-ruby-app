@@ -43,3 +43,8 @@ get '/blog/show/:id' do
   @post = posts.transaction{ posts[params[:id].to_i] }
   erb :'blog/show'
 end
+
+get '/blog/sync' do
+  sync = `cd db && git pull origin master && git commit -am "#{Time.now}" && git push origin master`
+  redirect '/blog' if sync
+end
