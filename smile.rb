@@ -41,7 +41,14 @@ end
 get '/blog/show/:id' do
   posts = PStore.new('db/blogposts')
   @post = posts.transaction{ posts[params[:id].to_i] }
+  @post[:id] = params[:id]
   erb :'blog/show'
+end
+
+post '/blog/delete/:id' do
+  posts = PStore.new('db/blogposts')
+  posts.transaction { posts.delete(params[:id].to_i) }
+  redirect '/blog'
 end
 
 get '/blog/sync' do
